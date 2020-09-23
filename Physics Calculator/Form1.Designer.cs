@@ -70,6 +70,7 @@
             this.openFIleToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.openFIleToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.openFIleToolStripMenuItem.Text = "Open FIle";
+            this.openFIleToolStripMenuItem.Click += new System.EventHandler(this.openFIleToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
