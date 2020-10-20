@@ -13,10 +13,13 @@ namespace Physics_Calculator
     public partial class Form1 : Form
     {
         TextBox screen = new TextBox();
-
+        double firstNumber;
+        string Operation;
+        const double pi = Math.PI;
 
         public Form1()
         {
+            
             InitializeComponent();
         }
 
@@ -42,21 +45,7 @@ namespace Physics_Calculator
 
             int x = 20;
             int y = 350;
-            /*
-            for (int i = 1; i <= 20; i++)
-            {
-                Rectangle rect = new Rectangle(x, y, 50, 50);
-                paper.FillRectangle(brush, rect);
-                x += 60;
 
-                if (i % 5 == 0)
-                {
-                    x = 20;
-                    y += -60;
-                }
-            }
-            y = 350;
-            */
             screen.BackColor = Color.GreenYellow;
             screen.Name = "Calculator screen";
             screen.Font = new Font("Courier new", 16);
@@ -76,6 +65,26 @@ namespace Physics_Calculator
             b0.Font = new Font("Comic Sans", 16);
             b0.Click += new EventHandler(b0_Click);
             Controls.Add(b0);
+
+            Button bdecipoint = new Button();
+            bdecipoint.Location = new Point(x += 60, y);
+            bdecipoint.Width = 50;
+            bdecipoint.Height = 50;
+            bdecipoint.Text = ".";
+            bdecipoint.Name = "Button Decimal Point";
+            bdecipoint.Font = new Font("Segoe UI", 16);
+            bdecipoint.Click += new EventHandler(bdecipoint_Click);
+            Controls.Add(bdecipoint);
+
+            Button bpi = new Button();
+            bpi.Location = new Point(x += 60, y);
+            bpi.Width = 50;
+            bpi.Height = 50;
+            bpi.Text = "π";
+            bpi.Name = "Button Pi";
+            bpi.Font = new Font("", 16);
+            bpi.Click += new EventHandler(bpi_Click);
+            Controls.Add(bpi);
 
             Button b1 = new Button();
             b1.Location = new Point(x = 20, y += -60);
@@ -166,10 +175,60 @@ namespace Physics_Calculator
             b9.Font = new Font("Comic Sans", 16);
             b9.Click += new EventHandler(b9_Click);
             Controls.Add(b9);
+
+            Button bplus = new Button();
+            bplus.Location = new Point(x = 20, y = 350);
+            bplus.Width = 50;
+            bplus.Height = 50;
+            bplus.Text = "+";
+            bplus.Name = "Button Plus";
+            bplus.Font = new Font("Comic Sans", 16);
+            bplus.Click += new EventHandler(bplus_Click);
+            Controls.Add(bplus);
+
+            Button bminus = new Button();
+            bminus.Location = new Point(x += 60, y);
+            bminus.Width = 50;
+            bminus.Height = 50;
+            bminus.Text = "-";
+            bminus.Name = "Button Minus";
+            bminus.Font = new Font("Comic Sans", 16);
+            bminus.Click += new EventHandler(bminus_Click);
+            Controls.Add(bminus);
+
+            Button bmultiply = new Button();
+            bmultiply.Location = new Point(x += 60, y);
+            bmultiply.Width = 50;
+            bmultiply.Height = 50;
+            bmultiply.Text = "x";
+            bmultiply.Name = "Button Multiply";
+            bmultiply.Font = new Font("Comic Sans", 16);
+            bmultiply.Click += new EventHandler(bmultiply_Click);
+            Controls.Add(bmultiply);
+
+            Button bdivide = new Button();
+            bdivide.Location = new Point(x += 60, y = 350);
+            bdivide.Width = 50;
+            bdivide.Height = 50;
+            bdivide.Text = "/";
+            bdivide.Name = "Button Divide";
+            bdivide.Font = new Font("Comic Sans", 16);
+            bdivide.Click += new EventHandler(bdivide_Click);
+            Controls.Add(bdivide);
+
+
         }
         private void b0_Click(object sender, EventArgs e)
         {
             screen.Text = screen.Text + "0";
+        }
+        private void bdecipoint_Click(object sender, EventArgs e)
+        {
+            screen.Text = screen.Text + ".";
+        }
+        private void bpi_Click(object sender, EventArgs e)
+        {
+            screen.Text = screen.Text + "π";
         }
         private void b1_Click(object sender, EventArgs e)
         {
@@ -279,6 +338,32 @@ namespace Physics_Calculator
                 screen.Text = screen.Text + "9";
             }
         }
+        private void bplus_Click(object sender, EventArgs e)
+        {
+            firstNumber = Convert.ToDouble(screen.Text);
+            screen.Text = screen.Text + "+";
+            Operation = "+";
+        }
+        private void bminus_Click(object sender, EventArgs e)
+        {
+            firstNumber = Convert.ToDouble(screen.Text);
+            screen.Text = screen.Text + "-";
+            Operation = "-";
+        }
+        private void bmultiply_Click(object sender, EventArgs e)
+        {
+            firstNumber = Convert.ToDouble(screen.Text);
+            screen.Text = screen.Text + "x";
+            Operation = "*";
+        }
+        private void bdivide_Click(object sender, EventArgs e)
+        {
+            firstNumber = Convert.ToDouble(screen.Text);
+            screen.Text = screen.Text + "/";
+            Operation = "%";
+        }
+
+
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.Close();
