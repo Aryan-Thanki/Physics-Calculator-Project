@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -48,11 +49,11 @@ namespace Physics_Calculator
 
             screen.BackColor = Color.GreenYellow;
             screen.Name = "Calculator screen";
-            screen.Font = new Font("Courier new", 16);
+            screen.Font = new Font("Segoe UI", 16);
             screen.Location = new Point(x, 30);
             screen.Width = 290;
             screen.Height = 100;
-            screen.Multiline = true;
+            screen.Multiline = true; 
             screen.ReadOnly = true;
             Controls.Add(screen);
 
@@ -62,7 +63,7 @@ namespace Physics_Calculator
             b0.Height = 50;
             b0.Text = "0";
             b0.Name = "Button 0";
-            b0.Font = new Font("Comic Sans", 16);
+            b0.Font = new Font("Segoe UI", 16);
             b0.Click += new EventHandler(b0_Click);
             Controls.Add(b0);
 
@@ -82,9 +83,19 @@ namespace Physics_Calculator
             bpi.Height = 50;
             bpi.Text = "π";
             bpi.Name = "Button Pi";
-            bpi.Font = new Font("", 16);
+            bpi.Font = new Font("Segoe UI", 16);
             bpi.Click += new EventHandler(bpi_Click);
             Controls.Add(bpi);
+
+            Button bequals = new Button();
+            bequals.Location = new Point(x += 60, y);
+            bequals.Width = 50;
+            bequals.Height = 50;
+            bequals.Text = "=";
+            bequals.Name = "Button Equals";
+            bequals.Font = new Font("Segoe UI", 16);
+            bequals.Click += new EventHandler(bequals_Click);
+            Controls.Add(bequals);
 
             Button b1 = new Button();
             b1.Location = new Point(x = 20, y += -60);
@@ -92,7 +103,7 @@ namespace Physics_Calculator
             b1.Height = 50;
             b1.Text = "1";
             b1.Name = "Button 1";
-            b1.Font = new Font("Comic Sans", 16);
+            b1.Font = new Font("Segoe UI", 16);
             b1.Click += new EventHandler(b1_Click);
             Controls.Add(b1);
 
@@ -102,7 +113,7 @@ namespace Physics_Calculator
             b2.Height = 50;
             b2.Text = "2";
             b2.Name = "Button 2";
-            b2.Font = new Font("Comic Sans", 16);
+            b2.Font = new Font("Segoe UI", 16);
             b2.Click += new EventHandler(b2_Click);
             Controls.Add(b2);
 
@@ -112,7 +123,7 @@ namespace Physics_Calculator
             b3.Height = 50;
             b3.Text = "3";
             b3.Name = "Button 3";
-            b3.Font = new Font("Comic Sans", 16);
+            b3.Font = new Font("Segoe UI", 16);
             b3.Click += new EventHandler(b3_Click);
             Controls.Add(b3);
 
@@ -122,7 +133,7 @@ namespace Physics_Calculator
             b4.Height = 50;
             b4.Text = "4";
             b4.Name = "Button 4";
-            b4.Font = new Font("Comic Sans", 16);
+            b4.Font = new Font("Segoe UI", 16);
             b4.Click += new EventHandler(b4_Click);
             Controls.Add(b4);
 
@@ -132,7 +143,7 @@ namespace Physics_Calculator
             b5.Height = 50;
             b5.Text = "5";
             b5.Name = "Button 5";
-            b5.Font = new Font("Comic Sans", 16);
+            b5.Font = new Font("Segoe UI", 16);
             b5.Click += new EventHandler(b5_Click);
             Controls.Add(b5);
 
@@ -142,7 +153,7 @@ namespace Physics_Calculator
             b6.Height = 50;
             b6.Text = "6";
             b6.Name = "Button 6";
-            b6.Font = new Font("Comic Sans", 16);
+            b6.Font = new Font("Segoe UI", 16);
             b6.Click += new EventHandler(b6_Click);
             Controls.Add(b6);
 
@@ -152,7 +163,7 @@ namespace Physics_Calculator
             b7.Height = 50;
             b7.Text = "7";
             b7.Name = "Button 7";
-            b7.Font = new Font("Comic Sans", 16);
+            b7.Font = new Font("Segoe UI", 16);
             b7.Click += new EventHandler(b7_Click);
             Controls.Add(b7);
 
@@ -162,7 +173,7 @@ namespace Physics_Calculator
             b8.Height = 50;
             b8.Text = "8";
             b8.Name = "Button 8";
-            b8.Font = new Font("Comic Sans", 16);
+            b8.Font = new Font("Segoe UI", 16);
             b8.Click += new EventHandler(b8_Click);
             Controls.Add(b8);
 
@@ -182,7 +193,7 @@ namespace Physics_Calculator
             bplus.Height = 50;
             bplus.Text = "+";
             bplus.Name = "Button Plus";
-            bplus.Font = new Font("Comic Sans", 16);
+            bplus.Font = new Font("Segoe UI", 16);
             bplus.Click += new EventHandler(bplus_Click);
             Controls.Add(bplus);
 
@@ -192,7 +203,7 @@ namespace Physics_Calculator
             bminus.Height = 50;
             bminus.Text = "-";
             bminus.Name = "Button Minus";
-            bminus.Font = new Font("Comic Sans", 16);
+            bminus.Font = new Font("Segoe UI", 16);
             bminus.Click += new EventHandler(bminus_Click);
             Controls.Add(bminus);
 
@@ -202,7 +213,7 @@ namespace Physics_Calculator
             bmultiply.Height = 50;
             bmultiply.Text = "x";
             bmultiply.Name = "Button Multiply";
-            bmultiply.Font = new Font("Comic Sans", 16);
+            bmultiply.Font = new Font("Segoe UI", 16);
             bmultiply.Click += new EventHandler(bmultiply_Click);
             Controls.Add(bmultiply);
 
@@ -212,7 +223,7 @@ namespace Physics_Calculator
             bdivide.Height = 50;
             bdivide.Text = "/";
             bdivide.Name = "Button Divide";
-            bdivide.Font = new Font("Comic Sans", 16);
+            bdivide.Font = new Font("Segoe UI", 16);
             bdivide.Click += new EventHandler(bdivide_Click);
             Controls.Add(bdivide);
 
@@ -230,6 +241,7 @@ namespace Physics_Calculator
         {
             screen.Text = screen.Text + "π";
         }
+
         private void b1_Click(object sender, EventArgs e)
         {
             
@@ -362,7 +374,47 @@ namespace Physics_Calculator
             screen.Text = screen.Text + "/";
             Operation = "%";
         }
+        
+        private void bequals_Click(object sender, EventArgs e)
+        {
+            double secondNumber;
+            double result;
 
+            secondNumber = Convert.ToDouble(screen.Text);
+
+            if (Operation == "+")
+            {
+                result = (firstNumber + secondNumber);
+                screen.Text = Convert.ToString(result);
+                firstNumber = result;
+            }
+            if (Operation == "-")
+            {
+                result = (firstNumber - secondNumber);
+                screen.Text = Convert.ToString(result);
+                firstNumber = result;
+            }
+            if (Operation == "*")
+            {
+                result = (firstNumber * secondNumber);
+                screen.Text = Convert.ToString(result);
+                firstNumber = result;
+            }
+            if (Operation == "/")
+            {
+                if (secondNumber == 0)
+                {
+                    screen.Text = "Cannot divide by 0";
+                }
+                else
+                {
+                    result = (firstNumber + secondNumber);
+                    screen.Text = Convert.ToString(result);
+                    firstNumber = result;
+                }
+                
+            }
+        }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
