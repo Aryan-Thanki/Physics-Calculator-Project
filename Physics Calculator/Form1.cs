@@ -127,6 +127,26 @@ namespace Physics_Calculator
             b3.Click += new EventHandler(b3_Click);
             Controls.Add(b3);
 
+            Button bplus = new Button();
+            bplus.Location = new Point(x += 60, y);
+            bplus.Width = 50;
+            bplus.Height = 50;
+            bplus.Text = "+";
+            bplus.Name = "Button Plus";
+            bplus.Font = new Font("Segoe UI", 16);
+            bplus.Click += new EventHandler(bplus_Click);
+            Controls.Add(bplus);
+
+            Button bminus = new Button();
+            bminus.Location = new Point(x += 60, y);
+            bminus.Width = 50;
+            bminus.Height = 50;
+            bminus.Text = "-";
+            bminus.Name = "Button Minus";
+            bminus.Font = new Font("Segoe UI", 16);
+            bminus.Click += new EventHandler(bminus_Click);
+            Controls.Add(bminus);
+
             Button b4 = new Button();
             b4.Location = new Point(x = 20, y += -60);
             b4.Width = 50;
@@ -157,6 +177,26 @@ namespace Physics_Calculator
             b6.Click += new EventHandler(b6_Click);
             Controls.Add(b6);
 
+            Button bmultiply = new Button();
+            bmultiply.Location = new Point(x += 60, y);
+            bmultiply.Width = 50;
+            bmultiply.Height = 50;
+            bmultiply.Text = "x";
+            bmultiply.Name = "Button Multiply";
+            bmultiply.Font = new Font("Segoe UI", 16);
+            bmultiply.Click += new EventHandler(bmultiply_Click);
+            Controls.Add(bmultiply);
+
+            Button bdivide = new Button();
+            bdivide.Location = new Point(x += 60, y);
+            bdivide.Width = 50;
+            bdivide.Height = 50;
+            bdivide.Text = "/";
+            bdivide.Name = "Button Divide";
+            bdivide.Font = new Font("Segoe UI", 16);
+            bdivide.Click += new EventHandler(bdivide_Click);
+            Controls.Add(bdivide);
+
             Button b7 = new Button();
             b7.Location = new Point(x = 20, y += -60);
             b7.Width = 50;
@@ -183,49 +223,20 @@ namespace Physics_Calculator
             b9.Height = 50;
             b9.Text = "9";
             b9.Name = "Button 9";
-            b9.Font = new Font("Comic Sans", 16);
+            b9.Font = new Font("Segoe UI", 16);
             b9.Click += new EventHandler(b9_Click);
             Controls.Add(b9);
 
-            Button bplus = new Button();
-            bplus.Location = new Point(x = 20, y = 350);
-            bplus.Width = 50;
-            bplus.Height = 50;
-            bplus.Text = "+";
-            bplus.Name = "Button Plus";
-            bplus.Font = new Font("Segoe UI", 16);
-            bplus.Click += new EventHandler(bplus_Click);
-            Controls.Add(bplus);
+            Button bdel = new Button();
+            bdel.Location = new Point(x += 60, y);
+            bdel.Width = 50;
+            bdel.Height = 50;
+            bdel.Text = "DEL";
+            bdel.Name = "Button Delete";
+            bdel.Font = new Font("Segoe UI", 14);
+            bdel.Click += new EventHandler(bdel_Click);
+            Controls.Add(bdel);
 
-            Button bminus = new Button();
-            bminus.Location = new Point(x += 60, y);
-            bminus.Width = 50;
-            bminus.Height = 50;
-            bminus.Text = "-";
-            bminus.Name = "Button Minus";
-            bminus.Font = new Font("Segoe UI", 16);
-            bminus.Click += new EventHandler(bminus_Click);
-            Controls.Add(bminus);
-
-            Button bmultiply = new Button();
-            bmultiply.Location = new Point(x += 60, y);
-            bmultiply.Width = 50;
-            bmultiply.Height = 50;
-            bmultiply.Text = "x";
-            bmultiply.Name = "Button Multiply";
-            bmultiply.Font = new Font("Segoe UI", 16);
-            bmultiply.Click += new EventHandler(bmultiply_Click);
-            Controls.Add(bmultiply);
-
-            Button bdivide = new Button();
-            bdivide.Location = new Point(x += 60, y = 350);
-            bdivide.Width = 50;
-            bdivide.Height = 50;
-            bdivide.Text = "/";
-            bdivide.Name = "Button Divide";
-            bdivide.Font = new Font("Segoe UI", 16);
-            bdivide.Click += new EventHandler(bdivide_Click);
-            Controls.Add(bdivide);
 
 
         }
@@ -241,7 +252,10 @@ namespace Physics_Calculator
         {
             screen.Text = screen.Text + "π";
         }
-
+        private void bdel_Click(object sender, EventArgs e)
+        {
+            screen.Text = screen.Text.Remove(screen.Text.Length - 1, 1);
+        }
         private void b1_Click(object sender, EventArgs e)
         {
             
