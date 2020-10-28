@@ -16,7 +16,7 @@ namespace Physics_Calculator
         TextBox screen = new TextBox();
         double firstNumber;
         string Operation;
-        const double pi = Math.PI;
+        const double π = Math.PI;
 
         public Form1()
         {
@@ -41,12 +41,12 @@ namespace Physics_Calculator
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Graphics paper = this.CreateGraphics();
-            SolidBrush brush = new SolidBrush(Color.CornflowerBlue);
-
+            // X coordinate
             int x = 20;
+            // Y coordinate
             int y = 350;
 
+            // Code for making a textbox 
             screen.BackColor = Color.GreenYellow;
             screen.Name = "Calculator screen";
             screen.Font = new Font("Segoe UI", 16);
@@ -57,6 +57,7 @@ namespace Physics_Calculator
             screen.ReadOnly = true;
             Controls.Add(screen);
 
+            //Code for the Button 0
             Button b0 = new Button();
             b0.Location = new Point(x, y);
             b0.Width = 50;
@@ -67,6 +68,7 @@ namespace Physics_Calculator
             b0.Click += new EventHandler(b0_Click);
             Controls.Add(b0);
 
+            //Code for the Decimal Point Button 
             Button bdecipoint = new Button();
             bdecipoint.Location = new Point(x += 60, y);
             bdecipoint.Width = 50;
@@ -77,6 +79,7 @@ namespace Physics_Calculator
             bdecipoint.Click += new EventHandler(bdecipoint_Click);
             Controls.Add(bdecipoint);
 
+            //Code for the Pi Constant button
             Button bpi = new Button();
             bpi.Location = new Point(x += 60, y);
             bpi.Width = 50;
@@ -87,6 +90,7 @@ namespace Physics_Calculator
             bpi.Click += new EventHandler(bpi_Click);
             Controls.Add(bpi);
 
+            //Code for the Equals Button
             Button bequals = new Button();
             bequals.Location = new Point(x += 60, y);
             bequals.Width = 50;
@@ -97,6 +101,7 @@ namespace Physics_Calculator
             bequals.Click += new EventHandler(bequals_Click);
             Controls.Add(bequals);
 
+            //Code for the Button One
             Button b1 = new Button();
             b1.Location = new Point(x = 20, y += -60);
             b1.Width = 50;
@@ -107,6 +112,7 @@ namespace Physics_Calculator
             b1.Click += new EventHandler(b1_Click);
             Controls.Add(b1);
 
+            //Code for the Button Two
             Button b2 = new Button();
             b2.Location = new Point(x += 60, y);
             b2.Width = 50;
@@ -117,6 +123,7 @@ namespace Physics_Calculator
             b2.Click += new EventHandler(b2_Click);
             Controls.Add(b2);
 
+            //Code for the Button Three
             Button b3 = new Button();
             b3.Location = new Point(x += 60, y);
             b3.Width = 50;
@@ -127,6 +134,7 @@ namespace Physics_Calculator
             b3.Click += new EventHandler(b3_Click);
             Controls.Add(b3);
 
+            //Code for the Addition Buttom
             Button bplus = new Button();
             bplus.Location = new Point(x += 60, y);
             bplus.Width = 50;
@@ -137,6 +145,7 @@ namespace Physics_Calculator
             bplus.Click += new EventHandler(bplus_Click);
             Controls.Add(bplus);
 
+            //Code for the Subtraction Button
             Button bminus = new Button();
             bminus.Location = new Point(x += 60, y);
             bminus.Width = 50;
@@ -147,6 +156,7 @@ namespace Physics_Calculator
             bminus.Click += new EventHandler(bminus_Click);
             Controls.Add(bminus);
 
+            //Code for the Button Four
             Button b4 = new Button();
             b4.Location = new Point(x = 20, y += -60);
             b4.Width = 50;
@@ -157,6 +167,7 @@ namespace Physics_Calculator
             b4.Click += new EventHandler(b4_Click);
             Controls.Add(b4);
 
+            //Code for the Button Five
             Button b5 = new Button();
             b5.Location = new Point(x += 60, y);
             b5.Width = 50;
@@ -167,6 +178,7 @@ namespace Physics_Calculator
             b5.Click += new EventHandler(b5_Click);
             Controls.Add(b5);
 
+            //Code for the Button Six
             Button b6 = new Button();
             b6.Location = new Point(x += 60, y);
             b6.Width = 50;
@@ -177,6 +189,7 @@ namespace Physics_Calculator
             b6.Click += new EventHandler(b6_Click);
             Controls.Add(b6);
 
+            //Code for the Multiply Button
             Button bmultiply = new Button();
             bmultiply.Location = new Point(x += 60, y);
             bmultiply.Width = 50;
@@ -187,6 +200,7 @@ namespace Physics_Calculator
             bmultiply.Click += new EventHandler(bmultiply_Click);
             Controls.Add(bmultiply);
 
+            //Code for the Divide Button
             Button bdivide = new Button();
             bdivide.Location = new Point(x += 60, y);
             bdivide.Width = 50;
@@ -197,6 +211,7 @@ namespace Physics_Calculator
             bdivide.Click += new EventHandler(bdivide_Click);
             Controls.Add(bdivide);
 
+            //Code for the Button Seven
             Button b7 = new Button();
             b7.Location = new Point(x = 20, y += -60);
             b7.Width = 50;
@@ -207,6 +222,7 @@ namespace Physics_Calculator
             b7.Click += new EventHandler(b7_Click);
             Controls.Add(b7);
 
+            //Code for the Button Eight
             Button b8 = new Button();
             b8.Location = new Point(x += 60, y);
             b8.Width = 50;
@@ -217,6 +233,7 @@ namespace Physics_Calculator
             b8.Click += new EventHandler(b8_Click);
             Controls.Add(b8);
 
+            //Code for the Button Nine
             Button b9 = new Button();
             b9.Location = new Point(x += 60, y);
             b9.Width = 50;
@@ -227,35 +244,80 @@ namespace Physics_Calculator
             b9.Click += new EventHandler(b9_Click);
             Controls.Add(b9);
 
+            //Code for the Delete Button
             Button bdel = new Button();
             bdel.Location = new Point(x += 60, y);
             bdel.Width = 50;
             bdel.Height = 50;
             bdel.Text = "DEL";
             bdel.Name = "Button Delete";
-            bdel.Font = new Font("Segoe UI", 14);
+            bdel.Font = new Font("Segoe UI", 12);
             bdel.Click += new EventHandler(bdel_Click);
             Controls.Add(bdel);
 
-
+            //Code for the Clear Button
+            Button bclear = new Button();
+            bclear.Location = new Point(x += 60, y);
+            bclear.Width = 50;
+            bclear.Height = 50;
+            bclear.Text = "CE";
+            bclear.Name = "Clear Button";
+            bclear.Font = new Font("Segoe UI", 12);
+            bclear.Click += new EventHandler(bclear_Click);
+            Controls.Add(bclear);
 
         }
+        /// <summary>
+        /// Produces a Zero in the text box when clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void b0_Click(object sender, EventArgs e)
         {
             screen.Text = screen.Text + "0";
         }
+        /// <summary>
+        /// Produces a Decimal Point on the text box when clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bdecipoint_Click(object sender, EventArgs e)
         {
             screen.Text = screen.Text + ".";
         }
+        /// <summary>
+        /// Produces a π symbol that represents pi on the textbox when clicked 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bpi_Click(object sender, EventArgs e)
         {
-            screen.Text = screen.Text + "π";
+            screen.Text = screen.Text + π;
         }
+        /// <summary>
+        /// Backspaces a single character on the textbox when clicked 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bdel_Click(object sender, EventArgs e)
         {
             screen.Text = screen.Text.Remove(screen.Text.Length - 1, 1);
         }
+        /// <summary>
+        /// Clears the textbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bclear_Click(object sender, EventArgs e)
+        {
+            screen.Clear();
+        }
+        /// <summary>
+        /// Produces a one in the textbox when clicked
+        /// If a textbox is not clear, a one is added onto the end of the current number
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void b1_Click(object sender, EventArgs e)
         {
             
@@ -268,6 +330,12 @@ namespace Physics_Calculator
                 screen.Text = screen.Text + "1";
             }
         }
+        /// <summary>
+        /// Produces a two in the textbox when clicked
+        /// If a textbox is not clear, a two is added onto the end of the current number
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void b2_Click(object sender, EventArgs e)
         {
 
@@ -280,6 +348,12 @@ namespace Physics_Calculator
                 screen.Text = screen.Text + "2";
             }
         }
+        /// <summary>
+        /// Produces a three in the textbox when clicked
+        /// If a textbox is not clear, a three is added onto the end of the current number
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void b3_Click(object sender, EventArgs e)
         {
 
@@ -292,6 +366,12 @@ namespace Physics_Calculator
                 screen.Text = screen.Text + "3";
             }
         }
+        /// <summary>
+        /// Produces a four in the textbox wnen clicked
+        /// If a textbox is not clear, a four is added onto the end of the current number
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void b4_Click(object sender, EventArgs e)
         {
 
@@ -304,6 +384,12 @@ namespace Physics_Calculator
                 screen.Text = screen.Text + "4";
             }
         }
+        /// <summary>
+        /// Produces a five in the textbox when clicked
+        /// If a textbox is not clear, a five is added onto the end of the current number
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void b5_Click(object sender, EventArgs e)
         {
 
@@ -316,6 +402,12 @@ namespace Physics_Calculator
                 screen.Text = screen.Text + "5";
             }
         }
+        /// <summary>
+        /// Produces a six in the textbox when clicked
+        /// If a textbox is not clear, a six is added onto the end of the current number
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void b6_Click(object sender, EventArgs e)
         {
 
@@ -328,6 +420,12 @@ namespace Physics_Calculator
                 screen.Text = screen.Text + "6";
             }
         }
+        /// <summary>
+        /// Produces a seven in the textbox when clicked
+        /// If a textbox is not clear, a seven is added onto the end of the current number
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void b7_Click(object sender, EventArgs e)
         {
 
@@ -340,6 +438,12 @@ namespace Physics_Calculator
                 screen.Text = screen.Text + "7";
             }
         }
+        /// <summary>
+        /// Produces a eight in the textbox when clicked
+        /// If a textbox is not clear, a eight is added onto the end of the current number
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void b8_Click(object sender, EventArgs e)
         {
 
@@ -352,6 +456,12 @@ namespace Physics_Calculator
                 screen.Text = screen.Text + "8";
             }
         }
+        /// <summary>
+        /// Produces a nine in the textbox when clicked
+        /// If a textbox is not clear, a nine is added onto the end of the current number
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void b9_Click(object sender, EventArgs e)
         {
 
@@ -364,29 +474,49 @@ namespace Physics_Calculator
                 screen.Text = screen.Text + "9";
             }
         }
+        /// <summary>
+        /// Produces a Addition Symbol in the textbox when pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bplus_Click(object sender, EventArgs e)
         {
             firstNumber = Convert.ToDouble(screen.Text);
-            screen.Text = screen.Text + "+";
+            screen.Text = "+";
             Operation = "+";
         }
+        /// <summary>
+        /// Produces a Subtraction Symbol in the textbox when pressed 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bminus_Click(object sender, EventArgs e)
         {
             firstNumber = Convert.ToDouble(screen.Text);
-            screen.Text = screen.Text + "-";
+            screen.Text = "-";
             Operation = "-";
         }
+        /// <summary>
+        /// Produces a Multiplication Symbol in the textbox when pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bmultiply_Click(object sender, EventArgs e)
         {
             firstNumber = Convert.ToDouble(screen.Text);
-            screen.Text = screen.Text + "x";
+            screen.Text = "x";
             Operation = "*";
         }
+        /// <summary>
+        /// Produces a Division Symbol in the textbox when pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bdivide_Click(object sender, EventArgs e)
         {
             firstNumber = Convert.ToDouble(screen.Text);
-            screen.Text = screen.Text + "/";
-            Operation = "%";
+            screen.Text = "/";
+            Operation = "/";
         }
         
         private void bequals_Click(object sender, EventArgs e)
@@ -422,7 +552,7 @@ namespace Physics_Calculator
                 }
                 else
                 {
-                    result = (firstNumber + secondNumber);
+                    result = (firstNumber / secondNumber);
                     screen.Text = Convert.ToString(result);
                     firstNumber = result;
                 }
