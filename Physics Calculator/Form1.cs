@@ -482,7 +482,7 @@ namespace Physics_Calculator
         private void bplus_Click(object sender, EventArgs e)
         {
             firstNumber = Convert.ToDouble(screen.Text);
-            screen.Text = "+";
+            screen.Text = "0";
             Operation = "+";
         }
         /// <summary>
@@ -493,7 +493,7 @@ namespace Physics_Calculator
         private void bminus_Click(object sender, EventArgs e)
         {
             firstNumber = Convert.ToDouble(screen.Text);
-            screen.Text = "-";
+            screen.Text = "0";
             Operation = "-";
         }
         /// <summary>
@@ -504,7 +504,7 @@ namespace Physics_Calculator
         private void bmultiply_Click(object sender, EventArgs e)
         {
             firstNumber = Convert.ToDouble(screen.Text);
-            screen.Text = "x";
+            screen.Text = "0";
             Operation = "*";
         }
         /// <summary>
@@ -515,10 +515,14 @@ namespace Physics_Calculator
         private void bdivide_Click(object sender, EventArgs e)
         {
             firstNumber = Convert.ToDouble(screen.Text);
-            screen.Text = "/";
+            screen.Text = "0";
             Operation = "/";
         }
-        
+        /// <summary>
+        /// Makes the numbers be calculates depending on the opertaion used
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bequals_Click(object sender, EventArgs e)
         {
             double secondNumber;
