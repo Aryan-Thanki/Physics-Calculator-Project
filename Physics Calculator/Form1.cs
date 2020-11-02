@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Physics_Calculator
 {
@@ -530,37 +531,44 @@ namespace Physics_Calculator
 
             secondNumber = Convert.ToDouble(screen.Text);
 
-            if (Operation == "+")
+            try
             {
-                result = (firstNumber + secondNumber);
-                screen.Text = Convert.ToString(result);
-                firstNumber = result;
-            }
-            if (Operation == "-")
-            {
-                result = (firstNumber - secondNumber);
-                screen.Text = Convert.ToString(result);
-                firstNumber = result;
-            }
-            if (Operation == "*")
-            {
-                result = (firstNumber * secondNumber);
-                screen.Text = Convert.ToString(result);
-                firstNumber = result;
-            }
-            if (Operation == "/")
-            {
-                if (secondNumber == 0)
+                if (Operation == "+")
                 {
-                    screen.Text = "Cannot divide by 0";
-                }
-                else
-                {
-                    result = (firstNumber / secondNumber);
+                    result = (firstNumber + secondNumber);
                     screen.Text = Convert.ToString(result);
                     firstNumber = result;
                 }
-                
+                if (Operation == "-")
+                {
+                    result = (firstNumber - secondNumber);
+                    screen.Text = Convert.ToString(result);
+                    firstNumber = result;
+                }
+                if (Operation == "*")
+                {
+                    result = (firstNumber * secondNumber);
+                    screen.Text = Convert.ToString(result);
+                    firstNumber = result;
+                }
+                if (Operation == "/")
+                {
+                    if (secondNumber == 0)
+                    {
+                        screen.Text = "Cannot divide by 0";
+                    }
+                    else
+                    {
+                        result = (firstNumber / secondNumber);
+                        screen.Text = Convert.ToString(result);
+                        firstNumber = result;
+                    }
+
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -571,7 +579,35 @@ namespace Physics_Calculator
 
         private void openFIleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            StreamReader reader;
+            StreamWriter writer;
+            int num1;
+            int num2;
+            const string FILTER = "Text Files|*.txt|CSV Files|*.csv|All Files|*.*";
+            openFileDialog1.Filter = FILTER;
+            try
+            {
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        reader = File.OpenText(openFileDialog1.FileName);
+                        writer = File.CreateText(saveFileDialog1.FileName);
+                    }
+                    reader = File.OpenText(openFileDialog1.FileName);
 
+                    while (!reader.EndOfStream)
+                    {
+                        num1 = int.Parse(reader.ReadLine());
+                        num2 = int.Parse(reader.ReadLine());
+                    }
+                    reader.Close();
+                }              
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
