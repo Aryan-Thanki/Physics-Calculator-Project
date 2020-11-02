@@ -17,7 +17,9 @@ namespace Physics_Calculator
         TextBox screen = new TextBox();
         double firstNumber;
         string Operation;
-        const double π = Math.PI;
+        // Pi Constant
+        public const double π = Math.PI;
+        // Speed of Light 
 
         public Form1()
         {
@@ -45,7 +47,7 @@ namespace Physics_Calculator
             // X coordinate
             int x = 20;
             // Y coordinate
-            int y = 350;
+            int y = 450;
 
             // Code for making a textbox 
             screen.BackColor = Color.GreenYellow;
@@ -90,6 +92,17 @@ namespace Physics_Calculator
             bpi.Font = new Font("Segoe UI", 16);
             bpi.Click += new EventHandler(bpi_Click);
             Controls.Add(bpi);
+
+            //Code for the Squared button
+            Button bsquare = new Button();
+            bsquare.Location = new Point(x += 60, y);
+            bsquare.Width = 50;
+            bsquare.Height = 50;
+            bsquare.Text = "[]^2";
+            bsquare.Name = "Button X^2";
+            bsquare.Font = new Font("Segoe UI", 12);
+            bsquare.Click += new EventHandler(bsquare_Click);
+            Controls.Add(bsquare);
 
             //Code for the Equals Button
             Button bequals = new Button();
@@ -267,7 +280,19 @@ namespace Physics_Calculator
             bclear.Click += new EventHandler(bclear_Click);
             Controls.Add(bclear);
 
+            //Code for the speed of light constant button
+            Button bc = new Button();
+            bc.Location = new Point(x = 20, y += -60);
+            bc.Width = 50;
+            bc.Height = 50;
+            bc.Text = "c";
+            bc.Name = "Button Speed of Light";
+            bc.Font = new Font("Segoe UI", 16);
+            bc.Click += new EventHandler(bc_Click);
+            Controls.Add(bc);
+
         }
+
         /// <summary>
         /// Produces a Zero in the text box when clicked
         /// </summary>
@@ -286,6 +311,7 @@ namespace Physics_Calculator
         {
             screen.Text = screen.Text + ".";
         }
+
         /// <summary>
         /// Produces a π symbol that represents pi on the textbox when clicked 
         /// </summary>
@@ -295,6 +321,7 @@ namespace Physics_Calculator
         {
             screen.Text = screen.Text + π;
         }
+
         /// <summary>
         /// Backspaces a single character on the textbox when clicked 
         /// </summary>
@@ -304,6 +331,7 @@ namespace Physics_Calculator
         {
             screen.Text = screen.Text.Remove(screen.Text.Length - 1, 1);
         }
+
         /// <summary>
         /// Clears the textbox
         /// </summary>
@@ -313,6 +341,29 @@ namespace Physics_Calculator
         {
             screen.Clear();
         }
+
+        /// <summary>
+        /// Squares the current number
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bsquare_Click(object sender, EventArgs e)
+        {
+            screen.Text = Convert.ToString(Convert.ToInt32(screen.Text) * Convert.ToInt32(screen.Text));
+        }
+
+        /// <summary>
+        /// Adds the number for speed of light autmaticlly into the textbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bc_Click(object sender, EventArgs e)
+        {
+            int c = 3 * (Convert.ToInt32(10) * Convert.ToInt32(10) * Convert.ToInt32(10) * Convert.ToInt32(10) 
+                        * Convert.ToInt32(10) * Convert.ToInt32(10) * Convert.ToInt32(10) * Convert.ToInt32(10));
+            screen.Text = screen.Text + c;
+        }
+
         /// <summary>
         /// Produces a one in the textbox when clicked
         /// If a textbox is not clear, a one is added onto the end of the current number
