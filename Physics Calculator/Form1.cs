@@ -19,7 +19,7 @@ namespace Physics_Calculator
         string Operation;
         // Pi Constant
         public const double π = Math.PI;
-
+ 
 
         public Form1()
         {
@@ -688,14 +688,17 @@ namespace Physics_Calculator
         /// <param name="e"></param>
         private void openFIleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Code that reads the file
             StreamReader reader;
             StreamWriter writer;
             int num1;
             int num2;
+            //Filters for the open dialog control
             const string FILTER = "Text Files|*.txt|CSV Files|*.csv|All Files|*.*";
             openFileDialog1.Filter = FILTER;
             try
             {
+                //IF the user presses okay, continues the following code
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -713,6 +716,7 @@ namespace Physics_Calculator
                     reader.Close();
                 }              
             }
+            //Show error if the user clicks cancel or exit
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
