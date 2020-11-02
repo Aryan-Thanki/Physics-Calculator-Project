@@ -19,7 +19,7 @@ namespace Physics_Calculator
         string Operation;
         // Pi Constant
         public const double π = Math.PI;
-        // Speed of Light 
+
 
         public Form1()
         {
@@ -302,6 +302,8 @@ namespace Physics_Calculator
         {
             screen.Text = screen.Text + "0";
         }
+
+
         /// <summary>
         /// Produces a Decimal Point on the text box when clicked
         /// </summary>
@@ -311,6 +313,7 @@ namespace Physics_Calculator
         {
             screen.Text = screen.Text + ".";
         }
+
 
         /// <summary>
         /// Produces a π symbol that represents pi on the textbox when clicked 
@@ -322,6 +325,7 @@ namespace Physics_Calculator
             screen.Text = screen.Text + π;
         }
 
+
         /// <summary>
         /// Backspaces a single character on the textbox when clicked 
         /// </summary>
@@ -331,6 +335,7 @@ namespace Physics_Calculator
         {
             screen.Text = screen.Text.Remove(screen.Text.Length - 1, 1);
         }
+
 
         /// <summary>
         /// Clears the textbox
@@ -342,6 +347,7 @@ namespace Physics_Calculator
             screen.Clear();
         }
 
+
         /// <summary>
         /// Squares the current number
         /// </summary>
@@ -351,6 +357,7 @@ namespace Physics_Calculator
         {
             screen.Text = Convert.ToString(Convert.ToInt32(screen.Text) * Convert.ToInt32(screen.Text));
         }
+
 
         /// <summary>
         /// Adds the number for speed of light autmaticlly into the textbox
@@ -363,6 +370,7 @@ namespace Physics_Calculator
                         * Convert.ToInt32(10) * Convert.ToInt32(10) * Convert.ToInt32(10) * Convert.ToInt32(10));
             screen.Text = screen.Text + c;
         }
+
 
         /// <summary>
         /// Produces a one in the textbox when clicked
@@ -382,6 +390,8 @@ namespace Physics_Calculator
                 screen.Text = screen.Text + "1";
             }
         }
+
+
         /// <summary>
         /// Produces a two in the textbox when clicked
         /// If a textbox is not clear, a two is added onto the end of the current number
@@ -400,6 +410,8 @@ namespace Physics_Calculator
                 screen.Text = screen.Text + "2";
             }
         }
+
+
         /// <summary>
         /// Produces a three in the textbox when clicked
         /// If a textbox is not clear, a three is added onto the end of the current number
@@ -418,6 +430,8 @@ namespace Physics_Calculator
                 screen.Text = screen.Text + "3";
             }
         }
+
+
         /// <summary>
         /// Produces a four in the textbox wnen clicked
         /// If a textbox is not clear, a four is added onto the end of the current number
@@ -436,6 +450,8 @@ namespace Physics_Calculator
                 screen.Text = screen.Text + "4";
             }
         }
+
+
         /// <summary>
         /// Produces a five in the textbox when clicked
         /// If a textbox is not clear, a five is added onto the end of the current number
@@ -454,6 +470,8 @@ namespace Physics_Calculator
                 screen.Text = screen.Text + "5";
             }
         }
+
+
         /// <summary>
         /// Produces a six in the textbox when clicked
         /// If a textbox is not clear, a six is added onto the end of the current number
@@ -472,6 +490,8 @@ namespace Physics_Calculator
                 screen.Text = screen.Text + "6";
             }
         }
+
+
         /// <summary>
         /// Produces a seven in the textbox when clicked
         /// If a textbox is not clear, a seven is added onto the end of the current number
@@ -490,6 +510,8 @@ namespace Physics_Calculator
                 screen.Text = screen.Text + "7";
             }
         }
+
+
         /// <summary>
         /// Produces a eight in the textbox when clicked
         /// If a textbox is not clear, a eight is added onto the end of the current number
@@ -508,6 +530,8 @@ namespace Physics_Calculator
                 screen.Text = screen.Text + "8";
             }
         }
+
+
         /// <summary>
         /// Produces a nine in the textbox when clicked
         /// If a textbox is not clear, a nine is added onto the end of the current number
@@ -526,6 +550,8 @@ namespace Physics_Calculator
                 screen.Text = screen.Text + "9";
             }
         }
+
+
         /// <summary>
         /// Produces a Addition Symbol in the textbox when pressed
         /// </summary>
@@ -537,6 +563,8 @@ namespace Physics_Calculator
             screen.Text = "0";
             Operation = "+";
         }
+
+
         /// <summary>
         /// Produces a Subtraction Symbol in the textbox when pressed 
         /// </summary>
@@ -548,6 +576,8 @@ namespace Physics_Calculator
             screen.Text = "0";
             Operation = "-";
         }
+
+
         /// <summary>
         /// Produces a Multiplication Symbol in the textbox when pressed
         /// </summary>
@@ -559,6 +589,8 @@ namespace Physics_Calculator
             screen.Text = "0";
             Operation = "*";
         }
+
+
         /// <summary>
         /// Produces a Division Symbol in the textbox when pressed
         /// </summary>
@@ -570,6 +602,8 @@ namespace Physics_Calculator
             screen.Text = "0";
             Operation = "/";
         }
+
+
         /// <summary>
         /// Makes the numbers be calculates depending on the opertaion used
         /// </summary>
@@ -577,33 +611,45 @@ namespace Physics_Calculator
         /// <param name="e"></param>
         private void bequals_Click(object sender, EventArgs e)
         {
+            //Variable for the seconf Number used in the calculation
             double secondNumber;
+            //Variable for the result
             double result;
 
             secondNumber = Convert.ToDouble(screen.Text);
 
+            //Try catch method for getting errors and keeping program open 
             try
             {
+                //IF operation is addition, the first and second number will be added together to
+                //form the result
                 if (Operation == "+")
                 {
                     result = (firstNumber + secondNumber);
                     screen.Text = Convert.ToString(result);
                     firstNumber = result;
                 }
+                //IF operation is subtraction, the first and second number will be minused from each other to
+                //form the result
                 if (Operation == "-")
                 {
                     result = (firstNumber - secondNumber);
                     screen.Text = Convert.ToString(result);
                     firstNumber = result;
                 }
+                //IF operation is multiplication, the first and second number will be timesed together to
+                //form the result
                 if (Operation == "*")
                 {
                     result = (firstNumber * secondNumber);
                     screen.Text = Convert.ToString(result);
                     firstNumber = result;
                 }
+                //IF operation is divison, the first and second number will be divided from each other to
+                //form the result
                 if (Operation == "/")
                 {
+                    //IF the seocnd number is zero the screen will say cannot divide by zero
                     if (secondNumber == 0)
                     {
                         screen.Text = "Cannot divide by 0";
@@ -623,11 +669,23 @@ namespace Physics_Calculator
             }
         }
 
+
+        /// <summary>
+        /// Exits the program
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+
+        /// <summary>
+        /// Opens the FIle Dialog so user can look for a text file to use for the program
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void openFIleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StreamReader reader;
