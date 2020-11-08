@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Physics_Calculator
 {
@@ -10,6 +12,7 @@ namespace Physics_Calculator
     {
         public int locationX;
         public int locationY;
+
         public int Width = 50;
         public int Height = 50;
         public string Text;
@@ -18,9 +21,12 @@ namespace Physics_Calculator
         public int fontSize = 16;
 
 
-            public Buttons()
+            public Buttons(int aLocationX, int aLocationY, string aText, string aName)
         {
-            
+            locationX = aLocationX;
+            locationY = aLocationY;
+            Text = aText;
+            Name = aName;
 
         }
     }

@@ -29,19 +29,14 @@ namespace Physics_Calculator
 
         public Form1()
         {
-
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {  
-            Buttons button0 = new Buttons();
-            button0.locationX = 20;
-            button0.locationY = 450;
-            button0.Text = "0";
-            button0.Name = "Button Zero";
-             
-            
+            Buttons button0 = new Buttons(20, 450, "0", "Button Zero");
+            Controls.Add(button0);
+            Console.WriteLine(button0.Location);
 
         }
         
