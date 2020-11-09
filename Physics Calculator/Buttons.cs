@@ -19,7 +19,7 @@ namespace Physics_Calculator
         public string Name;
         public string Font = "Segoe UI";
         public int fontSize = 16;
-
+        public int[,,] buttonsLocation = new int[1, 1, 3] { { { 1, 50, 50 } } };
 
             public Buttons(int aLocationX, int aLocationY, string aText, string aName)
         {
