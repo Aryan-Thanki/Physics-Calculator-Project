@@ -31,19 +31,28 @@ namespace Physics_Calculator
         string Operation;
         // Pi Constant
         public const double π = Math.PI;
+        public const double GRAVITY = 9.81;
+        List<CalcButton> buttonList = new List<CalcButton>();
 
-
+        //CalcButton butt1;
         public Form1()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {  
+        {
+            //Graphics paper = this.CreateGraphics();
+            StreamReader reader;
+            string line = "";
+            string[] csvArray;
+            OpenFileDialog dialog1 = new OpenFileDialog();
             // X coordinate
             int x = 20;
             // Y coordinate
             int y = 450;
+
+            int count = 1;
 
             // Code for making a textbox 
             screen.BackColor = Color.GreenYellow;
@@ -57,20 +66,120 @@ namespace Physics_Calculator
             screen.ReadOnly = true;
             Controls.Add(screen);
 
-            //Code for the Button 0
-            Button b0 = new Button();
-            b0.Location = new Point(x, y);
-            b0.Width = 50;
-            b0.Height = 50;
-            b0.Text = "0";
-            b0.Name = "Button 0";
+            //butt1 = new CalcButton(50, 200, 50, 50, "+", "Addition");
+            //butt1.DrawButton(paper);
+            string[] namesArray = new string[] { "Button Zero" , "Button Decimal Point" ,
+                "Button Pi" , "Button Squared" ,  "Button Equals" , "Button One" , "Button Two" ,
+                "Button Three" , "Button Plus" , "Button Minus" , "Button Four" , "Button Five" ,
+                "Button Six" , "Button Multiply" , "Button Divide" , "Button Seven" , "Button Eight" ,
+                "Button Nine" , "Button Delete" , "Button Clear" , "Button Speed of Light" ,
+                "Button Earth's Gravity" , "Button electron Charge"};
+
+            string[] textArray = new string[] { "0", "." , "π" , "[]^2" , "=" , "1" , "2" , "3" ,
+                "+" , "-" , "4" , "5" , "6" , "x" , "/" , "7" , "8" , "9" , "Del" , "CE" , "c" ,
+                "g" , "eC" };
+
+            if(dialog1.ShowDialog() == DialogResult.OK)
+            {
+                reader = File.OpenText(dialog1.FileName);
+                while(!reader.EndOfStream)
+                {
+                    line = reader.ReadLine();
+                    csvArray = line.Split(',');
+                    buttonList.Add(new CalcButton(x, y, 50, 50, csvArray[1], csvArray[0]));
+                    if ((count) % 5 == 0)
+                    {
+                        x = 20;
+                        y += -60;
+                    }
+                    else
+                    {
+                        x += 60;
+                    }
+                    count++;
+                }
+                reader.Close();
+            }
             
-            b0.Font = new Font("Segoe UI", 16);
-            b0.Click += new EventHandler(b0_Click);
-            Controls.Add(b0);
+            //for (int i = 0; i < namesArray.Length; i++)
+            //{
+            //    buttonList.Add(new CalcButton(x, y, 50, 50, textArray[i], namesArray[i]));
+            //    if ((i + 1) % 5 == 0)
+            //    {
+            //        x = 20;
+            //        y += -60;
+            //    }
+            //    else
+            //    {
+            //        x += 60;
+            //    }
+            //}
+
+            //Code for the Button 0
+            /*buttonList.Add(new CalcButton(x, y, 50, 50, "0", "Button Zero"));
+            x += 60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, ".", "Button Decimal Point"));
+            x += 60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "π", "Button Pi"));
+            x += 60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "[]^2", "Button Squared"));
+            x += 60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "=", "Button Equals"));
+            x = 20;
+            y += -60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "1", "Button One"));
+            x += 60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "2", "Button Two"));
+            x += 60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "3", "Button Three"));
+            x += 60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "+", "Button Plus"));
+            x += 60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "-", "Button Minus"));
+            x = 20;
+            y += -60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "4", "Button Four"));
+            x += 60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "5", "Button Five"));
+            x += 60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "6", "Button Six"));
+            x += 60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "x", "Button Multiply"));
+            x += 60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "/", "Button Divide"));
+            x = 20;
+            y += -60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "7", "Button Seven"));
+            x += 60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "8", "Button Eight"));
+            x += 60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "9", "Button Nine"));
+            x += 60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "Del", "Button Delete"));
+            x += 60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "CE", "Button Clear"));
+            x = 20;
+            y += -60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "c", "Button Speed of Light"));
+            x += 60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "g", "Button Earth's Gravity"));
+            x += 60;
+            buttonList.Add(new CalcButton(x, y, 50, 50, "eC", "Button electron Charge"));
+            */
+
+            //Button b0 = new Button();
+            //b0.Location = new Point(x, y);
+            //b0.Width = 50;
+            //b0.Height = 50;
+            //b0.Text = "0";
+            //b0.Name = "Button 0";
+
+            //b0.Font = new Font("Segoe UI", 16);
+            //b0.Click += new EventHandler(b0_Click);
+            //Controls.Add(b0);
 
             //Code for the Decimal Point Button 
-            Button bdecipoint = new Button();
+            /*Button bdecipoint = new Button();
             bdecipoint.Location = new Point(x += 60, y);
             bdecipoint.Width = 50;
             bdecipoint.Height = 50;
@@ -289,6 +398,38 @@ namespace Physics_Calculator
             bc.Click += new EventHandler(bc_Click);
             Controls.Add(bc);
 
+            //Code for the gravity button constant button
+            Button bg = new Button();
+            bg.Location = new Point(x += 60, y);
+            bg.Width = 50;
+            bg.Height = 50;
+            bg.Text = "g";
+            bg.Name = "Button Gravity";
+            bg.Font = new Font("Segoe UI", 16);
+            bg.Click += new EventHandler(bg_Click);
+            Controls.Add(bg);
+
+            //Code for the gravity button constant button
+            Button beC = new Button();
+            beC.Location = new Point(x += 60, y);
+            beC.Width = 50;
+            beC.Height = 50;
+            beC.Text = "eC";
+            beC.Name = "Button Electron Charge";
+            beC.Font = new Font("Segoe UI", 16);
+            beC.Click += new EventHandler(beC_Click);
+            Controls.Add(beC);
+
+            //Code for the Plancks Constant button
+            //Button bh = new Button();
+            //bh.Location = new Point(x += 60, y);
+            //bh.Width = 50;
+            //bh.Height = 50;
+            //bh.Text = "eC";
+            //bh.Name = "Button ";
+            //bh.Font = new Font("Segoe UI", 16);
+            //bh.Click += new EventHandler(bh_Click);
+            //Controls.Add(bh);*/
         }
  
 
@@ -297,10 +438,10 @@ namespace Physics_Calculator
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void b0_Click(object sender, EventArgs e)
-        {
-            screen.Text = screen.Text + "0";
-        }
+        //private void b0_Click(object sender, EventArgs e)
+        //{
+        //    screen.Text = screen.Text + "0";
+        //}
 
 
         /// <summary>
@@ -359,16 +500,53 @@ namespace Physics_Calculator
 
 
         /// <summary>
-        /// Adds the number for speed of light autmaticlly into the textbox
+        /// Adds the number for speed of light automaticlly into the textbox
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void bc_Click(object sender, EventArgs e)
         {
-            int c = 3 * (Convert.ToInt32(10) * Convert.ToInt32(10) * Convert.ToInt32(10) * Convert.ToInt32(10)
-                        * Convert.ToInt32(10) * Convert.ToInt32(10) * Convert.ToInt32(10) * Convert.ToInt32(10));
-            screen.Text = screen.Text + c;
+            //Creates a variable called c and gives it the value of 10 raised to the power of 8
+            double c = Math.Pow(10, 8);
+            //Adds the variable c multipled by 3 to the screen when the button c is pressed to represent speed of light
+            screen.Text = screen.Text + 3 * c;
         }
+
+
+        /// <summary>
+        /// Adds the value for earths gravity to the form when the button g is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bg_Click(object sender, EventArgs e)
+        {
+            //Adds the constant for Earths gravity to the screen when clicked
+            screen.Text = screen.Text + 9.81;
+        }
+
+        /// <summary>
+        /// Adds the value for charge of an electron when the button eC is clicked
+        /// Performs the calculation to create the small value for charge of an electron
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void beC_Click(object sender, EventArgs e)
+        {
+            //Creates a variable called eC and gives it the value of 10 raised to the power of -19
+            double eC = Math.Pow(10, -19);
+            //Adds the variable eC multipled by -1.6 to the screen when the button eC is pressed to represent charge of an electron
+            screen.Text = screen.Text + -1.6 * eC;
+        }
+
+
+        private void bh_Click(object sender, EventArgs e)
+        {
+            //Creates a variable called h and gives it the value of 10 raised to the power of - 19
+            double h = Math.Pow(10, -34);
+            //Adds the variable eC multipled by -1.6 to the screen when the button eC is pressed to represent charge of an electron
+            screen.Text = screen.Text + 6.63 * h;
+        } 
+
 
 
         /// <summary>
@@ -604,7 +782,7 @@ namespace Physics_Calculator
 
 
         /// <summary>
-        /// Makes the numbers be calculates depending on the opertaion used
+        /// Makes the numbers be calculates depending on the operation used
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -666,5 +844,176 @@ namespace Physics_Calculator
             }
         }
 
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            for(int i= 0; i < buttonList.Count; i++)
+            {
+                buttonList[i].DrawButton(e.Graphics);
+            }
+            
+        }
+
+        private void DoOperation(string op)
+        {
+            if (op[0] >= '0' && op[0] <= '9')
+            {
+                if (screen.Text == "0" && screen.Text != null)
+                {
+                    screen.Text = op;
+                }
+                else
+                {
+                    screen.Text = screen.Text + op;
+                }
+            }
+            //
+            else if (op == ".")
+            {
+                screen.Text = screen.Text + ".";
+            }
+            else if (op == "π")
+            {
+                screen.Text = screen.Text + π;
+            }
+            else if (op == "[]^2")
+            {
+                screen.Text = Convert.ToString(Convert.ToInt32(screen.Text) * Convert.ToInt32(screen.Text));
+            }
+            else if (op == "=")
+            {
+                OperationCalculation Calculate = new OperationCalculation();
+                secondNumber = Convert.ToDouble(screen.Text);
+
+                //Try catch method for getting errors and keeping program open 
+                try
+                {
+                    //IF operation is addition, the first and second number will be added together to
+                    //form the result
+                    if (Operation == "+")
+                    {
+                        result = Calculate.Addition(firstNumber, secondNumber);
+                        screen.Text = Convert.ToString(result);
+                        firstNumber = result;
+                    }
+                    //IF operation is subtraction, the first and second number will be minused from each other to
+                    //form the result
+                    if (Operation == "-")
+                    {
+                        result = Calculate.Subtraction(firstNumber, secondNumber);
+                        screen.Text = Convert.ToString(result);
+                        firstNumber = result;
+                    }
+                    //IF operation is multiplication, the first and second number will be timesed together to
+                    //form the result
+                    if (Operation == "*")
+                    {
+                        result = Calculate.Multiplication(firstNumber, secondNumber);
+                        screen.Text = Convert.ToString(result);
+                        firstNumber = result;
+                    }
+                    //IF operation is divison, the first and second number will be divided from each other to
+                    //form the result
+                    if (Operation == "/")
+                    {
+                        //IF the second number is zero the screen will say cannot divide by zero
+                        if (secondNumber == 0)
+                        {
+                            screen.Text = "Cannot divide by 0";
+                        }
+                        else
+                        {
+                            result = Calculate.Division(firstNumber, secondNumber);
+                            screen.Text = Convert.ToString(result);
+                            firstNumber = result;
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+
+                }
+            }
+            else if (op == "+")
+            {
+                firstNumber = Convert.ToDouble(screen.Text);
+                screen.Text = "0";
+                Operation = "+";
+            }
+            else if (op == "-")
+            {
+                firstNumber = Convert.ToDouble(screen.Text);
+                screen.Text = "0";
+                Operation = "-";
+            }
+            else if (op == "x")
+            {
+                firstNumber = Convert.ToDouble(screen.Text);
+                screen.Text = "0";
+                Operation = "*";
+            }
+            else if (op == "/")
+            {
+                firstNumber = Convert.ToDouble(screen.Text);
+                screen.Text = "0";
+                Operation = "/";
+            }
+            else if (op == "Del")
+            {
+                screen.Text = screen.Text.Remove(screen.Text.Length - 1, 1);
+            }
+            else if (op == "CE")
+            {
+                screen.Clear();
+            }
+            else if (op == "c")
+            {
+                //Creates a variable called c and gives it the value of 10 raised to the power of 8
+                double c = Math.Pow(10, 8);
+                //Adds the variable c multipled by 3 to the screen when the button c is pressed to represent speed of light
+                screen.Text = screen.Text + 3 * c;
+            }
+            else if (op == "g")
+            {
+                //Adds the constant for Earths gravity to the screen when clicked
+                screen.Text = screen.Text + GRAVITY;
+            }
+            else if (op == "eC")
+            {
+                //Creates a variable called eC and gives it the value of 10 raised to the power of -19
+                double eC = Math.Pow(10, -19);
+                //Adds the variable eC multipled by -1.6 to the screen when the button eC is pressed to represent charge of an electron
+                screen.Text = screen.Text + -1.6 * eC;
+            }
+            else if (op == "h")
+            {
+                //Creates a variable called h and gives it the value of 10 raised to the power of -34
+                double h = Math.Pow(10, -34);
+                //Adds the variable eC multipled by 6.63 to the screen when the button h is pressed to represent plancks constant
+                screen.Text = screen.Text + 6.63 * h;
+            }
+            
+
+        }
+
+
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            string op = "";
+            //if(butt1.CheckClick(e.X, e.Y) == true)
+            //{
+            //    MessageBox.Show("Clicked on");
+            //}
+            for(int i = 0; i < buttonList.Count; i++)
+            {
+                op = buttonList[i].CheckClick(e.X, e.Y);
+                if (op != "none")
+                {
+                    DoOperation(op);
+                    break;
+                }
+            }
+        }
     }
 }

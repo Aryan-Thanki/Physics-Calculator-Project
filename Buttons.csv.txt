@@ -1,0 +1,24 @@
+Button Zero,0
+Button Decimal Point,.
+Button Pi,π
+Button Squared,[]^2
+Button Equals,=
+Button One,1
+Button Two,2
+Button Three,3
+Button Plus,+
+Button Minus,-
+Button Four,4
+Button Five,5
+Button Six,6
+Button Multiply,x
+Button Divide,/
+Button Seven,7
+Button Eight,8
+Button Nine,9
+Button Delete,Del
+Button Clear,CE
+Button Speed of Light,c
+Button Earth's Gravity,g
+Button electron Charge,eC
+Button Plancks Constant,h
