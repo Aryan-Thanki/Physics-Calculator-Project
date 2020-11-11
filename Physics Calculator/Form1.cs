@@ -73,7 +73,7 @@ namespace Physics_Calculator
             //screen WIdth
             screen.Width = 290;
             //screen height
-            screen.Height = 100;
+            screen.Height = 150;
             //Make the screen bigger by having multple lines
             screen.Multiline = true;
             //Makes the screen readonly so the user can't type into it
@@ -237,18 +237,25 @@ namespace Physics_Calculator
                 //Adds the variable eC multipled by 6.63 to the screen when the button h is pressed to represent plancks constant
                 screen.Text = screen.Text + 6.63 * h;
             }
+            else if (op == "G")
+            {
+                //Creates a variable called G and gives it the value of 10 raised to the power of -11
+                double G = Math.Pow(10, -11);
+                //Ads\ds the variable G multiplied by 6.67 to the screen when the button G is clicked
+                screen.Text = screen.Text + 6.67 * G;
+            }
             // Makes the numbers be calculated depending on the operation used
             else if (op == "=")
             {
-                //Calls the operation calculation class to calculate the first and second number in the textbox
-                OperationCalculation Calculate = new OperationCalculation();
-                secondNumber = Convert.ToDouble(screen.Text);
-
                 //Try catch method for getting errors and keeping program open 
                 try
                 {
+                    //Calls the operation calculation class to calculate the first and second number in the textbox
+                    OperationCalculation Calculate = new OperationCalculation();
+                    secondNumber = Convert.ToDouble(screen.Text);
                     //IF operation is addition, the first and second number will be added together to
                     //form the result
+
                     if (Operation == "+")
                     {
                         result = Calculate.Addition(firstNumber, secondNumber);
@@ -289,9 +296,9 @@ namespace Physics_Calculator
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Please enter a number");
 
                 }
             }

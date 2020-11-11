@@ -22,3 +22,4 @@ Button Speed of Light,c
 Button Earth's Gravity,g
 Button electron Charge,eC
 Button Plancks Constant,h
+Button Univeral Gravitational Constant,G
