@@ -35,8 +35,6 @@ namespace Physics_Calculator
         {
             InitializeComponent();
         }
-
-
         /// <summary>
         /// Method for what appears on the form when it loads
         /// </summary>
@@ -51,6 +49,7 @@ namespace Physics_Calculator
             //Creates an array for the text file
             //When the data in the textfile is read is is transferred into this string array
             string[] csvArray;
+            //Open file dialog variable that allows me the read text file from outside my program
             OpenFileDialog dialog1 = new OpenFileDialog();
             // X coordinate
             int x = 20;
@@ -130,12 +129,32 @@ namespace Physics_Calculator
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             //for loop that creates buttons in the grephics(the form), and draws them one by one_
-            for(int i= 0; i < buttonList.Count; i++)
+            for(int i = 0; i < buttonList.Count; i++)
             {
                 buttonList[i].DrawButton(e.Graphics);
             }
-            
         }
+
+
+        /// <summary>
+        /// Method that checks if the user clicks on a button. If so perform the op method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            string op = "";
+            for(int i = 0; i < buttonList.Count; i++)
+            {
+                op = buttonList[i].CheckClick(e.X, e.Y);
+                if (op != "none")
+                {
+                    DoOperation(op);
+                    break;
+                }
+            }
+        }
+
         /// <summary>
         /// Does the code for every button when clicked
         /// </summary>
@@ -302,26 +321,8 @@ namespace Physics_Calculator
 
                 }
             }
-
         }
 
-        /// <summary>
-        /// Method that checks if the user clicks on a button. If so perform the op method
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Form1_MouseClick(object sender, MouseEventArgs e)
-        {
-            string op = "";
-            for(int i = 0; i < buttonList.Count; i++)
-            {
-                op = buttonList[i].CheckClick(e.X, e.Y);
-                if (op != "none")
-                {
-                    DoOperation(op);
-                    break;
-                }
-            }
-        }
+
     }
 }
